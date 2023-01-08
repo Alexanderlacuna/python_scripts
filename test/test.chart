@@ -1,0 +1,37 @@
+﻿[Song]
+{
+  Offset = 0
+  Resolution = 384
+  Player2 = bass
+  Difficulty = 0
+  PreviewStart = 0
+  PreviewEnd = 0
+  Genre = "rock"
+  MediaType = "cd"
+  MusicStream = "song.mp3"
+}
+[SyncTrack]
+{
+  0 = TS 4
+  0 = B 160000
+  6144 = B 120000
+  9216 = B 180000
+  12288 = B 150000
+}
+
+[ExpertSingle]
+{
+  0 = N 2 0
+  1536 = N 2 0
+  3072 = N 2 0
+  4608 = N 2 0
+  6144 = N 2 0
+  7680 = N 2 0
+  9216 = N 2 0
+  10752 = N 2 0
+  12288 = N 2 0
+  13824 = N 2 0
+  15360 = N 2 0
+  16896 = N 2 0
+  18432 = N 2 0
+}

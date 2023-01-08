@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Linux AppBox
+Exec=python3 /home/user/Projects/LinuxAppBox/linAppGUI.py %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=app-launcher
+Categories=GNOME;GTK;Application;System;Settings;
+StartupNotify=true
+
+
+
+

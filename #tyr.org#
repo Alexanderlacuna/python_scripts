@@ -1,0 +1,28 @@
+** hello
+** Heading
+
+[[www.google.com][google]]
+
+*bold this*
+
+/italic/
+_underline_
+_[[www.alex.com][alex]]_
+
+[[hello.com][name]]
+
+#+begin_quote
+hello there today is a wonderful day
+this is my quote 
+#+end_quote
+
+
+
+* DONE [#A] greet theme
+# using tags
+* TODO [#C] get som
+SCHEDULED: <2023-05-30 Qib>
+
+
+
+

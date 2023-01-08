@@ -1,0 +1,48 @@
+# variables loops while loops if else elif,functions,classes,methods,list,tuple
+
+"""
+data types 
+a) numbers  -> integer,float
+b) string -> collection of characters/word e.g 'a','tina'
+c) boolean - False or True
+
+
+""" 
+
+cup = "tea"
+
+
+def angie(a,b):
+    return (a*b)
+
+
+
+ 
+print(angie(a=3,b=2))
+
+def viv(name_of_school,name_of_teachers):
+    return (name_of_school,name_of_teachers)
+
+
+
+# write a function called multi that takes 3 inputs (integers) and compute their product
+
+def multi(m,n,p):
+    return(m*n*p)
+print(multi(m=5,n=2,p=6))
+
+
+sum([1,2,3,4])
+
+r = [1,2,3,4,5]
+filter(r,lambda x : x%2=1)
+
+
+
+def add_two_sum(a:int,b:int):
+    if type(a)==type(b)==int:
+        return a+b
+
+add_two_sum(2,3)
+
+

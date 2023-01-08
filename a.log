@@ -1,0 +1,49 @@
+== Info:   Trying 104.244.42.1:80...
+== Info: TCP_NODELAY set
+== Info: Connected to twitter.com (104.244.42.1) port 80 (#0)
+=> Send header, 75 bytes (0x4b)
+0000: 47 45 54 20 2f 20 48 54 54 50 2f 31 2e 31 0d 0a GET / HTTP/1.1..
+0010: 48 6f 73 74 3a 20 74 77 69 74 74 65 72 2e 63 6f Host: twitter.co
+0020: 6d 0d 0a 55 73 65 72 2d 41 67 65 6e 74 3a 20 63 m..User-Agent: c
+0030: 75 72 6c 2f 37 2e 36 38 2e 30 0d 0a 41 63 63 65 url/7.68.0..Acce
+0040: 70 74 3a 20 2a 2f 2a 0d 0a 0d 0a                pt: */*....
+== Info: Mark bundle as not supporting multiuse
+<= Recv header, 32 bytes (0x20)
+0000: 48 54 54 50 2f 31 2e 31 20 33 30 31 20 4d 6f 76 HTTP/1.1 301 Mov
+0010: 65 64 20 50 65 72 6d 61 6e 65 6e 74 6c 79 0d 0a ed Permanently..
+<= Recv header, 18 bytes (0x12)
+0000: 70 65 72 66 3a 20 37 36 32 36 31 34 33 39 32 38 perf: 7626143928
+0010: 0d 0a                                           ..
+<= Recv header, 32 bytes (0x20)
+0000: 6c 6f 63 61 74 69 6f 6e 3a 20 68 74 74 70 73 3a location: https:
+0010: 2f 2f 74 77 69 74 74 65 72 2e 63 6f 6d 2f 0d 0a //twitter.com/..
+<= Recv header, 46 bytes (0x2e)
+0000: 63 61 63 68 65 2d 63 6f 6e 74 72 6f 6c 3a 20 6e cache-control: n
+0010: 6f 2d 63 61 63 68 65 2c 20 6e 6f 2d 73 74 6f 72 o-cache, no-stor
+0020: 65 2c 20 6d 61 78 2d 61 67 65 3d 30 0d 0a       e, max-age=0..
+<= Recv header, 19 bytes (0x13)
+0000: 63 6f 6e 74 65 6e 74 2d 6c 65 6e 67 74 68 3a 20 content-length: 
+0010: 30 0d 0a                                        0..
+<= Recv header, 36 bytes (0x24)
+0000: 78 2d 74 72 61 6e 73 61 63 74 69 6f 6e 2d 69 64 x-transaction-id
+0010: 3a 20 39 65 32 38 31 38 38 33 31 36 34 34 33 33 : 9e281883164433
+0020: 65 39 0d 0a                                     e9..
+<= Recv header, 21 bytes (0x15)
+0000: 78 2d 72 65 73 70 6f 6e 73 65 2d 74 69 6d 65 3a x-response-time:
+0010: 20 39 39 0d 0a                                   99..
+<= Recv header, 85 bytes (0x55)
+0000: 78 2d 63 6f 6e 6e 65 63 74 69 6f 6e 2d 68 61 73 x-connection-has
+0010: 68 3a 20 30 61 63 61 66 32 65 36 35 37 61 62 32 h: 0acaf2e657ab2
+0020: 36 66 62 30 38 31 33 30 30 62 61 35 35 36 30 35 6fb081300ba55605
+0030: 37 33 34 34 39 30 31 61 33 61 61 65 65 62 36 37 7344901a3aaeeb67
+0040: 31 30 38 30 65 34 62 32 38 35 63 38 36 62 39 66 1080e4b285c86b9f
+0050: 33 64 36 0d 0a                                  3d6..
+<= Recv header, 37 bytes (0x25)
+0000: 64 61 74 65 3a 20 54 68 75 2c 20 32 37 20 4f 63 date: Thu, 27 Oc
+0010: 74 20 32 30 32 32 20 30 33 3a 30 33 3a 31 34 20 t 2022 03:03:14 
+0020: 47 4d 54 0d 0a                                  GMT..
+<= Recv header, 15 bytes (0xf)
+0000: 73 65 72 76 65 72 3a 20 74 73 61 5f 66 0d 0a    server: tsa_f..
+<= Recv header, 2 bytes (0x2)
+0000: 0d 0a                                           ..
+== Info: Connection #0 to host twitter.com left intact

@@ -1,0 +1,62 @@
+#-*- mode: org -*-
+#+ START: showall
+
+* Welcome to Org mode
+
+Welcome, and thanks for trying out org mode.Making outlines in
+Org is very simpl. It is just text! Just  typing
+
+
+* This is a headline,it starts with one r more starse
+
+* Working with lists
+
+** Moving around in our outline
+** Moving around headlines
+
+
+# list are defined as
+
+
+
+** Lord of the Rings
+
+My favorite scenes are (in this order)
+1. The attack of Rohirrim
+2. Eowyn;s fight with the witch king
+     + this was already my favorite
+
+Important actors in this films are:
+ - Elijah Wood :: He plays Frodo
+ - *for bold* /italic/ _underline_ =print("hello world")= d ~verbatim~, +strike-through+
+
+
+** TODO buy airplane
+
+** TODO APPLY For Visa
+
+** TODO Visit the the museum
+
+** TODO write on  <2022-07-21 Kam>
+
+Work Environment:
+
+OS: Ubuntu
+<computer specs>: RAM/ CPU
+[...]
+
+or
+
+Penguin:
+[...]
+  #+end_quote
+
+  Example table:
+
+  #+begin_quote
+| Dataset  | Commit                 | Time (s) |
+|----------+------------------------+----------|
+| BXD .... | 06eafeb (without Rust) |       11 |
+|          | ^HEAD (with Rust)      |       12 |
+|          |                        |          |
+  #+end_quote
