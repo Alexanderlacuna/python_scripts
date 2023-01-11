@@ -95,6 +95,10 @@ def fetch_datasets(conn):
 # store the results in sparql
 
 
+def query_for_last_modification(conn):
+	# database engine innodb check for both
+	
+
 
 def parse_dataset(results):
 	ids = ["ID"]
@@ -138,3 +142,20 @@ results2 = get_strains(conn=conn)
 results3 = fetch_datasets(conn=conn) # to be improved
 
 breakpoint()
+
+
+
+"""
+
+SELECT database_name,table_name,last_update FROM
+  mysql.innodb_table_stats a,
+  (SELECT database_name AS db_last_update_name,
+       max(last_update) AS db_last_update 
+   FROM mysql.innodb_table_stats 
+   WHERE database_name  in ( "db_webqtl")
+   GROUP BY database_name )  AS b 
+WHERE a.database_name = b.db_last_update_name
+
+  AND a.last_update = b.db_last_update ;
+
+"""
