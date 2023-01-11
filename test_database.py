@@ -92,11 +92,25 @@ def fetch_datasets(conn):
  
 
 
+
+
+def get_probesetfreeze(conn,probes):
+
+	with  conn.cursor() as cursor:
+		cursor.execute(
+			"SELECT ProbeSetFreeze.Id, ProbeSetFreeze.Name, ProbeSetFreeze.FullName "
+			"FROM ProbeSetFreeze "
+			"WHERE ProbeSetFreeze.Id=%s",
+			(probes,)
+			)
+		return cursor.fetchone()
+    
 # store the results in sparql
 
 
 def query_for_last_modification(conn):
 	# database engine innodb check for both
+    pass
 	
 
 
@@ -117,6 +131,27 @@ def parse_dataset(results):
 
 
 
+def generate_file(conn,db_name):
+
+    #write to file
+
+     # file name ,file expiry,type of storage  
+
+     # I want to use lmdb to store the files
+     # file name already done  #import that
+
+     # file expiry to be done lt
+
+
+  
+    try:
+        (data,col_ids) = parse_dataset(fetch_probeset_data(conn,shortname))
+
+
+
+    except Exception:
+        raise e
+
 
 # write into matrix data matrix
 
@@ -134,14 +169,30 @@ def __get_strain_col__(results):
 
 
 
-results = get_probesetfreezes(conn=conn)
 
 
-results2 = get_strains(conn=conn)
+#def generate_tmp_file()
+def fetch_probeset_data(conn,inbredsetid=1):
 
-results3 = fetch_datasets(conn=conn) # to be improved
+    for (_id,shortname,fullname) in get_probesetfreezes(conn):
+        results = fetch_datasets(conn)
+        # add worker to do this
+        return results
 
+
+
+
+#results = get_probesetfreezes(conn=conn)
+
+
+#results2 = get_strains(conn=conn)
+
+#results3 = fetch_datasets(conn=conn) # to be improved
+
+#results4 = get_probesetfreeze(conn=conn,probes=112)
+results5 = fetch_probeset_data(conn)
 breakpoint()
+
 
 
 
