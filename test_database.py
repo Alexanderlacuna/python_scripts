@@ -1,8 +1,7 @@
 
 from urllib.parse import urlparse
 import pymysql as mdb
-
-
+import os 
 
 def parse_db_url():
     """function to parse SQL_URI env variable note:there\
@@ -27,9 +26,8 @@ def database_connector():
     #return mdb.connect(host, user, passwd, db_name, port=(db_port or 3306))
 
 
-def get_probesetfreezes(conn):
+def get_probesetfreezes(conn,inbredsetid=1):
 
-	inbredsetid = 1
 
 	with conn.cursor() as cursor:
 		cursor.execute(
@@ -40,13 +38,11 @@ def get_probesetfreezes(conn):
     		(inbredsetid,)
 			)
 
-		results = cursor.fetchall()
-		return results
+		return  cursor.fetchall()  # todo monads
 
 
 def get_strains(conn,inbredsetid=1):
 
-	inbredsetid = 1
 
 	with conn.cursor() as cursor:
 		cursor.execute(
@@ -64,6 +60,8 @@ def get_strains(conn,inbredsetid=1):
 
 def probesetfreeze_list():
 	inbredsetid = 112
+
+    pass
 
 
 SQL_URI = "mysql://kabui:1234@localhost/db_webqtl"
@@ -142,10 +140,25 @@ def generate_file(conn,db_name):
 
      # file expiry to be done lt
 
+     # check at lmdb
+
 
   
     try:
         (data,col_ids) = parse_dataset(fetch_probeset_data(conn,shortname))
+
+        # get the env
+
+        full_path = os.path.join("/tmp","txt1.txt")
+
+        with open(full_path,"w+") as file_handler:
+            file_handler.write(",".join(col_ids))
+            for (key,val) in data.items():
+                file_handler.write(f"")
+
+
+
+        return (data,col_ids)
 
 
 
@@ -190,9 +203,13 @@ def fetch_probeset_data(conn,inbredsetid=1):
 #results3 = fetch_datasets(conn=conn) # to be improved
 
 #results4 = get_probesetfreeze(conn=conn,probes=112)
-results5 = fetch_probeset_data(conn)
-breakpoint()
+#results5 = fetch_probeset_data(conn)
+#breakpoint()
 
+
+results_6  = (data,col_ids) = parse_dataset(fetch_probeset_data(conn,db_name))
+
+breakpoint()
 
 
 
@@ -210,3 +227,19 @@ WHERE a.database_name = b.db_last_update_name
   AND a.last_update = b.db_last_update ;
 
 """
+
+import  lmdb
+import os
+import tempfile
+with tempfile.TemporaryDirectory() as tmpdirname:
+
+    tmp_file_path = os.path.join(tmpdirname,"img_lmdb")
+    breakpoint()
+    db = lmdb.open(tmp_file_path, map_size=int(1e12))
+
+    with db.begin(write=True) as in_txn:
+        in_txn.put("hello".encode(), "data_str".encode())
+
+    db.close()
+
+
