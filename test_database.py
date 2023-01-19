@@ -2,6 +2,7 @@
 from urllib.parse import urlparse
 import pymysql as mdb
 import os 
+import csv
 
 def parse_db_url():
     """function to parse SQL_URI env variable note:there\
@@ -19,9 +20,7 @@ def parse_db_url():
 def database_connector():
     """function to create db connector"""
     host, user, passwd, db_name, db_port = parse_db_url()
-
-    conn=mdb.connect(host=host,user=user,password=passwd,database=db_name)
-    return conn
+    return mdb.connect(host=host,user=user,password=passwd,database=db_name)
 
     #return mdb.connect(host, user, passwd, db_name, port=(db_port or 3306))
 
@@ -61,8 +60,6 @@ def get_strains(conn,inbredsetid=1):
 def probesetfreeze_list():
 	inbredsetid = 112
 
-    pass
-
 
 SQL_URI = "mysql://kabui:1234@localhost/db_webqtl"
 #SQL_URI = "mysql://webqtlout:webqtlout@localhost/db_webqtl"
@@ -84,9 +81,8 @@ def fetch_datasets(conn):
 	        "(SELECT Id FROM ProbeSetFreeze WHERE Name = %s) "
 	        "ORDER BY Strain.Name",
 	        (db_name,))
-	    results_v  = cursor.fetchall()
+	    return cursor.fetchall()  #use of maybe'
 
-	return results_v
  
 
 
@@ -127,9 +123,9 @@ def parse_dataset(results):
 	return (data,ids)
 
 
+# above refactor the code
 
-
-def generate_file(conn,db_name):
+def generate_file(conn,db_name,file_name="none"):
 
     #write to file
 
@@ -145,25 +141,16 @@ def generate_file(conn,db_name):
 
   
     try:
-        (data,col_ids) = parse_dataset(fetch_probeset_data(conn,shortname))
+        (data,col_ids) = parse_dataset(fetch_probeset_data(conn,db_name))
+        with open( os.path.join("/tmp","txt1x.txt"),"w+" ,encoding='UTF8') as file_handler:
 
-        # get the env
+            writer = csv.writer(file_handler)
+            writer.writerow(col_ids) # write header s
+            writer.writerows(val for val in data.values() )
+            return "success"
 
-        full_path = os.path.join("/tmp","txt1.txt")
-
-        with open(full_path,"w+") as file_handler:
-            file_handler.write(",".join(col_ids))
-            for (key,val) in data.items():
-                file_handler.write(f"")
-
-
-
-        return (data,col_ids)
-
-
-
-    except Exception:
-        raise e
+    except Exception as error:
+        raise error
 
 
 # write into matrix data matrix
@@ -209,7 +196,10 @@ def fetch_probeset_data(conn,inbredsetid=1):
 
 results_6  = (data,col_ids) = parse_dataset(fetch_probeset_data(conn,db_name))
 
-breakpoint()
+
+
+
+results = generate_file(conn,db_name)
 
 
 
@@ -228,6 +218,8 @@ WHERE a.database_name = b.db_last_update_name
 
 """
 
+"""
+
 import  lmdb
 import os
 import tempfile
@@ -242,4 +234,4 @@ with tempfile.TemporaryDirectory() as tmpdirname:
 
     db.close()
 
-
+"""
